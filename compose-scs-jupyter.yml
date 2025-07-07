@@ -1,16 +1,13 @@
 services:
   jupyter-notebook:
-    image: docker.io/tstuckey303/scs-analysis-jupyter:1.1
+    image: docker.io/tstuckey303/scs-analysis-jupyter:1.2
     container_name: analysis_container_jupyter
     ports:
       - "8888:8888"
     volumes:
       - "./_data:/home/jovyan/_data"
       - "./notebooks/Jupyter_Notebooks:/home/jovyan/work"
-    # Open without separate token authentication prompt
-    environment:
-      - PYDEVD_DISABLE_FILE_VALIDATION=1
-    command: "start-notebook.sh --NotebookApp.token="
+    command: "start-notebook.sh"
     restart: unless-stopped
 
   sqlitebrowser:
@@ -23,5 +20,5 @@ services:
       - "3001:3001"
     volumes:
       - "./.config/sqlitebrowser:/config"
-      -  "./data:/config/data"
+      -  "./_data:/config/data"
     restart: unless-stopped 
