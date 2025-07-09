@@ -3,11 +3,12 @@ services:
     image: docker.io/tstuckey303/scs-analysis-jupyter:1.2
     container_name: analysis_container_jupyter
     ports:
-      - "8888:8888"
+      - "4000:8888"
     volumes:
       - "./_data:/home/jovyan/_data"
-      - "./notebooks/Jupyter_Notebooks:/home/jovyan/work"
-    command: "start-notebook.sh"
+      - "./notebooks/Jupyter_Notebooks:/home/jovyan/work/notebooks"
+    command: "start-notebook.py"
+    #command: "start-notebook.py ServerApp.root_dir=/home/jovyan/work"
     restart: unless-stopped
 
   sqlitebrowser:
