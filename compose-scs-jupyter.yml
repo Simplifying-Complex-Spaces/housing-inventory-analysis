@@ -11,13 +11,3 @@ services:
     environment:
       - JUPYTER_TOKEN=scs
     restart: unless-stopped
-
-  sqlitebrowser:
-    image: docker.io/linuxserver/sqlitebrowser:3.12.2
-    container_name: analysis_container_sqlite
-    ports:
-      - "7322:3000"
-    volumes:
-      - "./.config/sqlitebrowser:/config"
-      -  "./_data:/config/data"
-    restart: unless-stopped 
