@@ -1,5 +1,5 @@
 # Housing Inventory 
-
+This repository contains the setup to analyze housing inventory data using a basic linear model. With data maintained in a SQLite database
 
 
 
