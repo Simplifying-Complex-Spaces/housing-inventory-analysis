@@ -1,13 +1,10 @@
 services:
   jupyter-notebook:
-    image: docker.io/tstuckey303/scs-analysis-jupyter:1.2
+    image: docker.io/tstuckey303/scs-analysis-jupyter:1.22
     container_name: analysis_container_jupyter
     ports:
       - "7321:8888"
     volumes:
       - "./_data:/home/jovyan/_data"
       - "./notebooks/Jupyter_Notebooks:/home/jovyan/work/notebooks"
-    command: "start-notebook.py"
-    environment:
-      - JUPYTER_TOKEN=scs
     restart: unless-stopped
