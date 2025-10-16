@@ -27,14 +27,14 @@ def get_and_check_db_file(local_filename=db_path + db_name,
     Check the file hash is correct. If it's not right, try downloading it; then check the hash again
     :return:
     """
-    print('\nFrom convenience routine, Working Directory is:\t' + str(pl.Path.cwd()))
-    print('\nFrom convenience routine,  local file name is:\t' + local_filename + ' and pl.Path version is:\t' +
-          str(pl.Path(local_filename)) + '\n')
+    # print('\nFrom convenience routine, Working Directory is:\t' + str(pl.Path.cwd()))
+    # print('\nFrom convenience routine,  local file name is:\t' + local_filename + ' and pl.Path version is:\t' +
+    #      str(pl.Path(local_filename)) + '\n')
 
     if not pl.Path(local_filename).exists():
         urlretrieve(full_url, local_filename)
     else:
-        print('already had a copy')
+        print('Already had a copy')
 
     # check the hash of the local copy regardless whether we had it or we just downloaded it
     file_hash = compute_md5_hash(local_filename)
@@ -43,10 +43,10 @@ def get_and_check_db_file(local_filename=db_path + db_name,
         urlretrieve(full_url, local_filename)
         file_hash = compute_md5_hash(local_filename)
         if file_hash != hash_val:
-            print('hash mismatch even with a fresh pull, double check the hash in your notebook')
+            print('Hash mismatch even with a fresh pull, double check the hash in your notebook')
             exit(2)
     else:
-        print('hash matches: good to go!')
+        print('Hash matches: good to go!')
 
     return
 
